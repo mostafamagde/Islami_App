@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami/layout/layout_view.dart';
 import 'package:islami/modules/Splash/splash_view.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'core/app_provider.dart';
 import 'core/application_theme_manager.dart';

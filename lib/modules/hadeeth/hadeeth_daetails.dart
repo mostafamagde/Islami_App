@@ -31,8 +31,8 @@ class hadeethdetails extends StatelessWidget {
             "إسلامى",
             style: theme.textTheme.titleLarge,
           ),
-          iconTheme: const IconThemeData(
-            color: Colors.white,
+          iconTheme:  IconThemeData(
+            color:provider.isdark()?Colors.white:Colors.black,
           ),
           //  backgroundColor: Colors.black,
         ),
@@ -75,7 +75,7 @@ class hadeethdetails extends StatelessWidget {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  itemCount: data.text.length,
+                  itemCount: 1,
                 ),
               )
             ],

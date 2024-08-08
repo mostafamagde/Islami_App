@@ -33,19 +33,23 @@ class _HadeetviewState extends State<Hadeetview> {
         ),
         const Divider(),
         Expanded(
-            child: ListView.builder(
-          itemBuilder: (context, index) => InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, hadeethdetails.route,
-                  arguments: hadeethlist[index]);
-            },
-            child: Text(
-              hadeethlist[index].title,
-              textAlign: TextAlign.center,
+          child: ListView.builder(
+            itemBuilder: (context, index) => InkWell(
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  hadeethdetails.route,
+                  arguments: hadeethlist[index],
+                );
+              },
+              child: Text(
+                hadeethlist[index].title,
+                textAlign: TextAlign.center,
+              ),
             ),
+            itemCount: hadeethlist.length,
           ),
-          itemCount: hadeethlist.length,
-        ))
+        )
       ],
     );
   }
@@ -53,11 +57,12 @@ class _HadeetviewState extends State<Hadeetview> {
   Future<void> readhadeeth() async {
     String allhadeethdata =
         await rootBundle.loadString("assets/files/ahadeth.txt");
-    List<String> allhadeeth = allhadeethdata.split('#');
+    List<String> allhadeeth = allhadeethdata.split("#");
 
     for (int i = 0; i < allhadeeth.length; i++) {
       String hadeeth = allhadeeth[i].trim();
-      int titlelength = hadeeth.indexOf("\n");
+      int titlelength = hadeeth.indexOf("\n",0);
+      if (titlelength == -1) continue;
 
       String hadeethtitle = hadeeth.substring(0, titlelength);
       String hadeethtext = hadeeth.substring(titlelength + 1);
@@ -68,6 +73,7 @@ class _HadeetviewState extends State<Hadeetview> {
       );
       hadeethlist.add(data);
     }
+
     setState(() {});
   }
 }
